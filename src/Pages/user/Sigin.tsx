@@ -14,11 +14,6 @@ export function Sigin() {
     confirmPassword: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormValues({ ...formValues, [name]: value });
-  };
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -43,7 +38,6 @@ export function Sigin() {
               name="nombres"
               placeholder="Nombres"
               value={formValues.nombre}
-              onChange={handleChange}
               className="mt-1 p-4 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
             />
           </div>
@@ -53,7 +47,6 @@ export function Sigin() {
               name="apellido"
               placeholder="Apellido"
               value={formValues.apellido}
-              onChange={handleChange}
               className="mt-1 p-4 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
             />
           </div>
@@ -63,7 +56,6 @@ export function Sigin() {
               name="email"
               placeholder="Correo electrónico"
               value={formValues.email}
-              onChange={handleChange}
               className="mt-1 p-4 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
             />
           </div>
@@ -73,7 +65,6 @@ export function Sigin() {
               name="password"
               placeholder="Contraseña"
               value={formValues.password}
-              onChange={handleChange}
               className="mt-1 block p-4 w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
             />
           </div>
@@ -83,7 +74,6 @@ export function Sigin() {
               name="confirmPassword"
               placeholder="Confirmar contraseña"
               value={formValues.confirmPassword}
-              onChange={handleChange}
               className="mt-1 block p-4 w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
             />
           </div>
