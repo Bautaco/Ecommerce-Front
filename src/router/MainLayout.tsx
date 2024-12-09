@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-import Sidebar from "../components/Sidebar/Sidebar";
 import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header/Header";
-import SVGTextLogo from "../assets/TextLogo";
 import { cn } from "../utils/utils";
 
 export function MainLayout() {
@@ -31,7 +29,7 @@ export function MainLayout() {
         )}
       />
       <div className="text-white font-sans flex ">
-        <div className="w-full">
+        <div className="w-full ">
           <Outlet />
         </div>
       </div>

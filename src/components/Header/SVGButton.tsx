@@ -1,5 +1,8 @@
-import React, { ComponentProps } from "react";
+import { ComponentProps } from "react";
 
-export default function SVGButton({ children }: ComponentProps<"button">) {
-  return <button>{children}</button>;
+export default function SVGButton({
+  children,
+  onClick,
+}: ComponentProps<"button">) {
+  return <button onClick={onClick}>{children}</button>;
 }

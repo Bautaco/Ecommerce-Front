@@ -1,6 +1,5 @@
 import { useState } from "react";
 import PageTemplate from "../components/PageTemplate";
-import Sidebar from "../components/Sidebar/Sidebar";
 import PhotoGallery from "../components/Gallery/PhotoGallery";
 
 export default function Home() {

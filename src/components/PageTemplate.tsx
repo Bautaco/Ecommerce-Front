@@ -9,7 +9,7 @@ export default function PageTemplate({
   return (
     <div
       {...props}
-      className={cn(className, "flex  min-h-screen  bg-[#FAE2E2] relative")}
+      className={cn(className, "flex min-h-screen  bg-[#FAE2E2] relative")}
     >
       <main className="flex-grow w-full">{children}</main>
     </div>
