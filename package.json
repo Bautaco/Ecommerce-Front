@@ -18,7 +18,8 @@
     "react-dom": "^18.3.1",
     "react-router": "6",
     "react-router-dom": "6",
-    "tailwind-merge": "^2.5.5"
+    "tailwind-merge": "^2.5.5",
+    "template-react": "file:"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
