@@ -7,11 +7,11 @@ export function Sigin() {
 
   // Estado para manejar los valores del formulario
   const [formValues, setFormValues] = useState({
-    nombre: "",
-    apellido: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
+    nombre: "Fernando",
+    apellido: "Monti",
+    email: "fer@monti@gmail.com",
+    password: "123456",
+    confirmPassword: "123456",
   });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -37,7 +37,6 @@ export function Sigin() {
               type="text"
               name="nombres"
               placeholder="Nombres"
-              value={formValues.nombre}
               className="mt-1 p-4 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
             />
           </div>
@@ -46,7 +45,6 @@ export function Sigin() {
               type="text"
               name="apellido"
               placeholder="Apellido"
-              value={formValues.apellido}
               className="mt-1 p-4 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
             />
           </div>
@@ -55,7 +53,6 @@ export function Sigin() {
               type="email"
               name="email"
               placeholder="Correo electrónico"
-              value={formValues.email}
               className="mt-1 p-4 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
             />
           </div>
@@ -64,7 +61,6 @@ export function Sigin() {
               type="password"
               name="password"
               placeholder="Contraseña"
-              value={formValues.password}
               className="mt-1 block p-4 w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
             />
           </div>
@@ -73,7 +69,6 @@ export function Sigin() {
               type="password"
               name="confirmPassword"
               placeholder="Confirmar contraseña"
-              value={formValues.confirmPassword}
               className="mt-1 block p-4 w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
             />
           </div>
