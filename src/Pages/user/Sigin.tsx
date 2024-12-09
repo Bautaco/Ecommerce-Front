@@ -37,7 +37,7 @@ export function Sigin() {
               type="text"
               name="nombres"
               placeholder="Nombres"
-              className="mt-1 p-4 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
+              className="mt-1 p-4 text-black block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
             />
           </div>
           <div className="mt-7">
@@ -45,7 +45,7 @@ export function Sigin() {
               type="text"
               name="apellido"
               placeholder="Apellido"
-              className="mt-1 p-4 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
+              className="mt-1 p-4 block text-black w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
             />
           </div>
           <div className="mt-7">
@@ -53,7 +53,7 @@ export function Sigin() {
               type="email"
               name="email"
               placeholder="Correo electrónico"
-              className="mt-1 p-4 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
+              className="mt-1 p-4 block text-black w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
             />
           </div>
           <div className="mt-7">
@@ -61,7 +61,7 @@ export function Sigin() {
               type="password"
               name="password"
               placeholder="Contraseña"
-              className="mt-1 block p-4 w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
+              className="mt-1 block p-4 text-black w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
             />
           </div>
           <div className="mt-7">
@@ -69,13 +69,13 @@ export function Sigin() {
               type="password"
               name="confirmPassword"
               placeholder="Confirmar contraseña"
-              className="mt-1 block p-4 w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
+              className="mt-1 block text-black p-4 w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
             />
           </div>
           <div className="mt-7">
             <button
               type="submit"
-              className="w-full p-4 bg-black text-white hover:bg-gray-800 rounded-xl py-3 px-10"
+              className="w-full p-4 text-black bg-black  hover:bg-gray-800 rounded-xl py-3 px-10"
             >
               Crear
             </button>
