@@ -8,8 +8,10 @@ import SVGTextLogo from "../../assets/TextLogo";
 import { useNavigate } from "react-router";
 import DropDownMenu, { Options } from "../DropDownMenu";
 import DropDownCartMenu from "../Cart/DropDownCartMenu";
+import useUserStore from "../../store/UserStore";
 export default function Header({ className }: ComponentProps<"header">) {
   const navigate = useNavigate();
+  const { usuario } = useUserStore();
 
   const options: Options[] = [
     {
@@ -21,6 +23,18 @@ export default function Header({ className }: ComponentProps<"header">) {
       href: "/login",
     },
   ];
+  const optionsLogout: Options[] = [
+    {
+      title: "Salir",
+      href: "/",
+    },
+  ];
+  function handleLogin(): boolean {
+    if (usuario.email !== "") {
+      return false;
+    }
+    return true;
+  }
   return (
     <header className={cn(className, "flex  justify-between p-2 h-10")}>
       <div className="flex items-center ">
@@ -45,7 +59,7 @@ export default function Header({ className }: ComponentProps<"header">) {
 
         <DropDownMenu
           children={<SVG_User width={15} height={15} />}
-          options={options}
+          options={handleLogin() ? options : optionsLogout}
         />
         <DropDownCartMenu
           children={<SVG_Cart width={15} height={15} stroke="gray"></SVG_Cart>}

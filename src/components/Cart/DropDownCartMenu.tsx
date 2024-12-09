@@ -1,13 +1,12 @@
-import React, {
+import {
   ComponentProps,
   PropsWithChildren,
   useEffect,
   useRef,
   useState,
 } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useProductStore from "../../store/CartStore";
-import { calculateTotal } from "./functions";
 import CartItem from "./CartItem";
 import useUserStore from "../../store/UserStore";
 
