@@ -1,7 +1,10 @@
 import PageTemplate from "../components/PageTemplate";
 import { ProductCard, ProductCardType } from "../components/ProductCard";
+import { getProducts } from "../handlers/handlers";
 
 export function ListaProductos() {
+  const listaProductos=getProducts();
+  console.log(listaProductos)
   return (
     <PageTemplate className="w-screen">
       <h1 className="text-black text-2xl font-bold p-10">
