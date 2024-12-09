@@ -13,12 +13,12 @@ export default function Header({ className }: ComponentProps<"header">) {
 
   const options: Options[] = [
     {
-      title: "comprar",
-      href: "/",
+      title: "Ingresar...",
+      href: "/sigin",
     },
     {
-      title: "Borrar",
-      href: "",
+      title: "CrearCuenta...",
+      href: "/login",
     },
   ];
   return (
@@ -43,7 +43,10 @@ export default function Header({ className }: ComponentProps<"header">) {
           <SVG_Search width={15} height={15} />
         </SVGButton>
 
-        <DropDownMenu children={<SVG_User width={15} height={15} />} />
+        <DropDownMenu
+          children={<SVG_User width={15} height={15} />}
+          options={options}
+        />
         <DropDownCartMenu
           children={<SVG_Cart width={15} height={15} stroke="gray"></SVG_Cart>}
         />

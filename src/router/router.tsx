@@ -15,6 +15,20 @@ export const router = createBrowserRouter([
         },
       },
       {
+        path: "/login",
+        lazy: async () => {
+          let { Login } = await import("../Pages/user/Login");
+          return { Component: Login };
+        },
+      },
+      {
+        path: "/sigin",
+        lazy: async () => {
+          let { Sigin } = await import("../Pages/user/Sigin");
+          return { Component: Sigin };
+        },
+      },
+      {
         path: "/ListaProductos",
         lazy: async () => {
           let { ListaProductos } = await import("../Pages/ListaProductos");

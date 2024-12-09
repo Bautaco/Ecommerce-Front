@@ -16,6 +16,8 @@ interface ProductStore {
   incrementQuantity: (id: string) => void;
   decrementQuantity: (id: string) => void;
   removeProduct: (id: string) => void;
+  borrarCarrito: () =>void;
+
 }
 
 const useProductStore = create(
@@ -54,6 +56,10 @@ const useProductStore = create(
         set((state) => ({
           products: state.products.filter((p) => p.id !== id),
         })),
+        borrarCarrito: () =>
+          set(() => ({
+            products:[]
+          })),
     }),
     {
       name: 'product-store', // Nombre de la clave en sessionStorage

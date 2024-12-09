@@ -20,3 +20,12 @@ type Producto = {
       id: number;
     };
   };
+
+  type Usuario = {
+    nombre :string
+     apellido: string
+     email: string
+     password: string
+     role?: string
+     cart?: Producto[]
+  }

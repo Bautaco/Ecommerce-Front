@@ -5,10 +5,11 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useProductStore from "../../store/CartStore";
 import { calculateTotal } from "./functions";
 import CartItem from "./CartItem";
+import useUserStore from "../../store/UserStore";
 
 export default function DropDownCartMenu({
   children,
@@ -16,7 +17,8 @@ export default function DropDownCartMenu({
 }: PropsWithChildren & {} & ComponentProps<"button">) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const { products } = useProductStore();
+  const { products, borrarCarrito } = useProductStore();
+  const { usuario } = useUserStore();
 
   const toggleMenu = () => setIsOpen((prev) => !prev); // Cierra el menú si se hace clic fuera
   const handleClickOutside = (event: MouseEvent) => {
@@ -27,6 +29,15 @@ export default function DropDownCartMenu({
       setIsOpen(false);
     }
   };
+  const navigate = useNavigate();
+  function handleCompra() {
+    if (usuario.nombre !== "") {
+      alert("Compra realizada con éxito!");
+      borrarCarrito();
+    } else {
+      navigate("/login");
+    }
+  }
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
@@ -52,6 +63,9 @@ export default function DropDownCartMenu({
           aria-labelledby="menu-button"
         >
           <div className="py-1 " role="none">
+            <h3 className="text-black font-semibold text-xl p-4">
+              Tus Productos
+            </h3>
             {products
               ? products.map((product) => {
                   return (
@@ -66,7 +80,14 @@ export default function DropDownCartMenu({
                 })
               : null}
             {/* <h3>Total : {calculateTotal()}</h3> */}
-            <button>Comprar</button>
+            <button
+              className="bg-black w-full"
+              onClick={() => {
+                handleCompra();
+              }}
+            >
+              Comprar
+            </button>
           </div>
         </div>
       )}
