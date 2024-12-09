@@ -2,7 +2,7 @@ import { useState } from "react";
 import PageTemplate from "../components/PageTemplate";
 import PhotoGallery from "../components/Gallery/PhotoGallery";
 
-export default function Home() {
+export function Home() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (

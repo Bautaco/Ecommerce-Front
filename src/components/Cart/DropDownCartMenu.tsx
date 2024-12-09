@@ -6,27 +6,19 @@ import React, {
   useState,
 } from "react";
 import { Link } from "react-router-dom";
-export interface Options {
-  title: string;
-  href?: string;
-}
-export default function DropDownMenu({
+import useProductStore from "../../store/CartStore";
+import { calculateTotal } from "./functions";
+import CartItem from "./CartItem";
+
+export default function DropDownCartMenu({
   children,
-  arrow,
-  options,
-  cart,
   ...props
-}: PropsWithChildren & {
-  arrow?: boolean;
-  options?: Options[];
-  cart?: any;
-} & ComponentProps<"button">) {
+}: PropsWithChildren & {} & ComponentProps<"button">) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const { products } = useProductStore();
 
-  const toggleMenu = () => setIsOpen((prev) => !prev);
-
-  // Cierra el menú si se hace clic fuera
+  const toggleMenu = () => setIsOpen((prev) => !prev); // Cierra el menú si se hace clic fuera
   const handleClickOutside = (event: MouseEvent) => {
     if (
       dropdownRef.current &&
@@ -50,22 +42,6 @@ export default function DropDownMenu({
         className="inline-flex  justify-center  text-sm font-medium text-gray-700 shadow-sm w-auto"
       >
         {children}
-        {arrow && (
-          <svg
-            className={`ml-2 h-5 w-5 transition-transform ${
-              isOpen ? "rotate-180" : "rotate-0"
-            }`}
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4 4a.75.75 0 01-1.06 0l-4-4a.75.75 0 01.02-1.06z"
-              clipRule="evenodd"
-            />
-          </svg>
-        )}
       </button>
 
       {isOpen && (
@@ -76,18 +52,21 @@ export default function DropDownMenu({
           aria-labelledby="menu-button"
         >
           <div className="py-1 " role="none">
-            {options?.map((item) => {
-              return (
-                <Link
-                  to={item.href ?? "/"}
-                  key={Math.random()}
-                  className="block px-4 py-2 hover:bg-[#d5bfd9] hover:text-[#f3daf7] text-sm text-gray-700 "
-                  role="menuitem"
-                >
-                  {item.title}
-                </Link>
-              );
-            })}
+            {products
+              ? products.map((product) => {
+                  return (
+                    <CartItem
+                      id={product.id}
+                      title={product.title}
+                      description={"Product"}
+                      price={product.price}
+                      imageSource={"src/assets/fotos/1.webp"}
+                    />
+                  );
+                })
+              : null}
+            {/* <h3>Total : {calculateTotal()}</h3> */}
+            <button>Comprar</button>
           </div>
         </div>
       )}

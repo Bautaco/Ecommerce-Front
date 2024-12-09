@@ -1,7 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import Home from "../Pages/Home";
 import { MainLayout } from "./MainLayout";
-import ListaProductos from "../Pages/ListaProductos";
 import ErrorPage from "../Pages/ErrorPage";
 export const router = createBrowserRouter([
   {
@@ -9,9 +7,20 @@ export const router = createBrowserRouter([
     element: <MainLayout />,
     errorElement: <ErrorPage />,
     children: [
-      { path: "/", element: <Home /> },
-      // Add more routes here
-      { path: "/ListaProductos", element: <ListaProductos /> },
+      {
+        path: "/",
+        lazy: async () => {
+          let { Home } = await import("../Pages/Home");
+          return { Component: Home };
+        },
+      },
+      {
+        path: "/ListaProductos",
+        lazy: async () => {
+          let { ListaProductos } = await import("../Pages/ListaProductos");
+          return { Component: ListaProductos };
+        },
+      },
     ],
   },
 ]);
