@@ -1,7 +1,6 @@
 import { ComponentProps, PropsWithChildren } from "react";
 import { cn } from "../utils/utils";
-import Header from "./Header/Header";
-import Footer from "./Footer";
+
 export default function PageTemplate({
   children,
   className,
@@ -10,11 +9,9 @@ export default function PageTemplate({
   return (
     <div
       {...props}
-      className={cn(className, "flex flex-col min-h-screen min-w-[100vw]")}
+      className={cn(className, "flex  min-h-screen  bg-[#FAE2E2] relative")}
     >
-      <Header />
       <main className="flex-grow w-full">{children}</main>
-      <Footer />
     </div>
   );
 }

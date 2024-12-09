@@ -1,0 +1,41 @@
+import { useEffect, useState } from "react";
+import Sidebar from "../components/Sidebar/Sidebar";
+import { Outlet } from "react-router-dom";
+import Footer from "../components/Footer";
+import Header from "../components/Header/Header";
+import SVGTextLogo from "../assets/TextLogo";
+import { cn } from "../utils/utils";
+
+export function MainLayout() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50); // Cambia a `true` si se desplaza más de 50px
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  return (
+    <>
+      <Header
+        className={cn(
+          "fixed z-50 w-full",
+          scrolled
+            ? "bg-gradient-to-b from-transparent to-red-100 shadow-lg"
+            : "bg-transparent"
+        )}
+      />
+      <div className="text-white font-sans flex ">
+        <div className="w-full">
+          <Outlet />
+        </div>
+      </div>
+      <Footer />
+    </>
+  );
+}
