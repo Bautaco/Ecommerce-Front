@@ -33,9 +33,8 @@ export function Login() {
   };
 
   return (
-    <PageTemplate className="w-screen">
-      <div className="flex m-10  flex flex-col items-center">
-        <h1 className="text-2xl text-black">Iniciar Sesión</h1>
+    <PageTemplate title="Login" titleClassName="text-center">
+      <div className="   flex flex-col items-center">
         <form onSubmit={handleSubmit} className="mt-10 w-full max-w-sm">
           <div>
             <input

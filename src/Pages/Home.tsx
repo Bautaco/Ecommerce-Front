@@ -6,9 +6,9 @@ export function Home() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <PageTemplate>
+    <>
       <img src="src\assets\desktop.webp" alt="woman-style" className="w-full" />
       <PhotoGallery />
-    </PageTemplate>
+    </>
   );
 }

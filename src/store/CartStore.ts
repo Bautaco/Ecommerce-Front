@@ -7,6 +7,7 @@ interface Product {
   title: string;
   price: number;
   quantity: number;
+  images: string;
 }
 
 // Interfaz de la store
@@ -36,7 +37,8 @@ const useProductStore = create(
               ),
             };
           }
-          return { products: [...state.products, product] };
+       
+          return{ products: [...state.products, product] };
         }),
       incrementQuantity: (id) =>
         set((state) => ({

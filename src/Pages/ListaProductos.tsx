@@ -19,12 +19,8 @@ export function ListaProductos() {
   }, [listaProductos]);
 
   return (
-    <PageTemplate className="w-screen">
-      <h1 className="text-black text-2xl font-bold p-10">
-        Todos nuestros productos
-      </h1>
-
-      <div className="p-32 pt-10 flex gap-6 flex-wrap">
+    <PageTemplate title="Todos nuestros productos">
+      <div className="p-32  max-sm:p-2 justify-center items-center pt-10 flex gap-6 flex-wrap">
         {listaProductos.map((product) => (
           <ProductCard
             key={product.sku}
@@ -38,10 +34,10 @@ export function ListaProductos() {
 
         <ProductCard
           description="2AADSF"
-          imageSource="src\assets\fotos\1.webp"
-          price={2999}
-          title="POLLERA PANTALON"
-          id="2"
+          imageSource="src\assets\fotos\2.webp"
+          price={20000}
+          title="POLLERA "
+          id="1"
         />
         <ProductCard
           description="2AADSF"
@@ -52,73 +48,18 @@ export function ListaProductos() {
         />
         <ProductCard
           description="2AADSF"
-          imageSource="src\assets\fotos\1.webp"
-          price={2999}
-          title="POLLERA PANTALON"
-          id="2"
+          imageSource="src\assets\fotos\3.webp"
+          price={4000}
+          title="Top Level"
+          id="3"
         />
+
         <ProductCard
           description="2AADSF"
-          imageSource="src\assets\fotos\1.webp"
-          price={2999}
-          title="POLLERA PANTALON"
-          id="2"
-        />
-        <ProductCard
-          description="2AADSF"
-          imageSource="src\assets\fotos\1.webp"
-          price={2999}
-          title="POLLERA PANTALON"
-          id="2"
-        />
-        <ProductCard
-          description="2AADSF"
-          imageSource="src\assets\fotos\1.webp"
-          price={2999}
-          title="POLLERA PANTALON"
-          id="2"
-        />
-        <ProductCard
-          description="2AADSF"
-          imageSource="src\assets\fotos\1.webp"
-          price={2999}
-          title="POLLERA PANTALON"
-          id="2"
-        />
-        <ProductCard
-          description="2AADSF"
-          imageSource="src\assets\fotos\1.webp"
-          price={2999}
-          title="POLLERA PANTALON"
-          id="2"
-        />
-        <ProductCard
-          description="2AADSF"
-          imageSource="src\assets\fotos\1.webp"
-          price={2999}
-          title="POLLERA PANTALON"
-          id="2"
-        />
-        <ProductCard
-          description="2AADSF"
-          imageSource="src\assets\fotos\1.webp"
-          price={2999}
-          title="POLLERA PANTALON"
-          id="2"
-        />
-        <ProductCard
-          description="2AADSF"
-          imageSource="src\assets\fotos\1.webp"
-          price={2999}
-          title="POLLERA PANTALON"
-          id="2"
-        />
-        <ProductCard
-          description="2AADSF"
-          imageSource="src\assets\fotos\1.webp"
-          price={2999}
-          title="POLLERA PANTALON"
-          id="2"
+          imageSource="src\assets\fotos\5.webp"
+          price={4000}
+          title="Top Level"
+          id="4"
         />
       </div>
     </PageTemplate>

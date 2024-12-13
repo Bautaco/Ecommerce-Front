@@ -9,7 +9,12 @@ export default {
     "path-to-your-node_modules/@material-tailwind/react/theme/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors:{
+        primary:"#f3daf7",
+        hover:"#f6bdff"
+      }
+    },
   },
   plugins: [],
 };

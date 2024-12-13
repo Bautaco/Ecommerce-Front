@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import useProductStore from "../../store/CartStore";
 import CartItem from "./CartItem";
 import useUserStore from "../../store/UserStore";
+import { calculateTotal } from "./functions";
 
 export default function DropDownCartMenu({
   children,
@@ -19,7 +20,8 @@ export default function DropDownCartMenu({
   const { products, borrarCarrito } = useProductStore();
   const { usuario } = useUserStore();
 
-  const toggleMenu = () => setIsOpen((prev) => !prev); // Cierra el menú si se hace clic fuera
+  const total = calculateTotal();
+  const toggleMenu = () => setIsOpen((prev) => !prev);
   const handleClickOutside = (event: MouseEvent) => {
     if (
       dropdownRef.current &&
@@ -56,14 +58,14 @@ export default function DropDownCartMenu({
 
       {isOpen && (
         <div
-          className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-[#f3daf7] shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+          className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-t-md bg-primary shadow-lg ring-1 ring-black ring-opacity-5  focus:outline-none"
           role="menu"
           aria-orientation="vertical"
           aria-labelledby="menu-button"
         >
-          <div className="py-1 " role="none">
-            <h3 className="text-black font-semibold text-xl p-4">
-              Tus Productos
+          <div className="py-1 overflow-auto" role="none">
+            <h3 className="text-black font-semibold text-md p-4">
+              {products ? "Tus productos" : " No hay Productos"}
             </h3>
             {products
               ? products.map((product) => {
@@ -73,14 +75,19 @@ export default function DropDownCartMenu({
                       title={product.title}
                       description={"Product"}
                       price={product.price}
-                      imageSource={"src/assets/fotos/1.webp"}
+                      imageSource={product.images}
+                      quantity={product.quantity}
                     />
                   );
                 })
               : null}
-            {/* <h3>Total : {calculateTotal()}</h3> */}
+            {
+              <h3 className="text-black font-extrabold p-2">
+                Total : ${total}
+              </h3>
+            }
             <button
-              className="bg-black w-full"
+              className="bg-black  hover:bg-hover hover:text-black w-full"
               onClick={() => {
                 handleCompra();
               }}

@@ -7,6 +7,7 @@ export interface ProductCardType {
   description: string;
   price: number;
   imageSource: string;
+  quantity?: number;
 }
 export function ProductCard({
   description,
@@ -26,7 +27,13 @@ export function ProductCard({
         <button
           className="w-full p-4 hover:bg-[#f6bdff] hover:text-black"
           onClick={() => {
-            addProduct({ id: id, price: price, quantity: 1, title: title });
+            addProduct({
+              id: id,
+              price: price,
+              quantity: 1,
+              title: title,
+              images: imageSource,
+            });
           }}
         >
           Add to cart

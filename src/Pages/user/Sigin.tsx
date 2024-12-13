@@ -29,7 +29,7 @@ export function Sigin() {
 
   return (
     <PageTemplate className="w-screen">
-      <div className="flex m-10  flex flex-col items-center">
+      <div className="flex m-10 flex-col items-center">
         <h1 className="text-2xl text-black">Crear Cuenta</h1>
         <form onSubmit={handleSubmit} className="mt-10">
           <div>

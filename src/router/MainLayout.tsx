@@ -9,7 +9,7 @@ export function MainLayout() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50); // Cambia a `true` si se desplaza más de 50px
+      setScrolled(window.scrollY > 50);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -28,10 +28,8 @@ export function MainLayout() {
             : "bg-transparent"
         )}
       />
-      <div className="text-white font-sans flex ">
-        <div className="w-full ">
-          <Outlet />
-        </div>
+      <div className="text-white font-sans">
+        <Outlet />
       </div>
       <Footer />
     </>
