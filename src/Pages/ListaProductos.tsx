@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import PageTemplate from "../components/PageTemplate";
-import { ProductCard, ProductCardType } from "../components/ProductCard";
+import { ProductCard } from "../components/ProductCard";
 import { getProducts } from "../handlers/handlers";
 
 export function ListaProductos() {

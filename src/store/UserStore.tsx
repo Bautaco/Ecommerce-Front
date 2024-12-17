@@ -1,6 +1,5 @@
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
-import { ProductCardType } from "../components/ProductCard";
 
 // Interfaz del producto
 

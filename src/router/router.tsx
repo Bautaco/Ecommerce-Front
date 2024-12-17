@@ -1,11 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
-import { MainLayout } from "./MainLayout";
 import ErrorPage from "../Pages/ErrorPage";
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <MainLayout />,
     errorElement: <ErrorPage />,
+    lazy: async () => {
+      let { MainLayout } = await import("./MainLayout");
+      return { Component: MainLayout };
+    },
     children: [
       {
         path: "/",

@@ -1,4 +1,3 @@
-import React from "react";
 import useProductStore from "../store/CartStore";
 
 export interface ProductCardType {

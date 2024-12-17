@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const images = Array.from(
   { length: 11 },
@@ -51,6 +51,7 @@ export default function PhotoGallery() {
           src={images[currentIndexes[0]]}
           alt="Foto dinámica 1"
           className={getImageClass(0)}
+          loading="lazy"
         />
       </div>
       <div className="col-span-2 row-span-1">

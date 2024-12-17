@@ -1,4 +1,3 @@
-import React from "react";
 import SVGTextLogo from "../assets/TextLogo";
 import SVGLogo from "../assets/Logo";
 import { useNavigate } from "react-router";

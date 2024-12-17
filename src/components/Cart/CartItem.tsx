@@ -1,9 +1,7 @@
-import React from "react";
 import { ProductCardType } from "../ProductCard";
 import useProductStore from "../../store/CartStore";
 
 export default function CartItem({
-  description,
   id,
   imageSource,
   price,

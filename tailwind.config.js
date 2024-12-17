@@ -12,7 +12,9 @@ export default {
     extend: {
       colors:{
         primary:"#f3daf7",
-        hover:"#f6bdff"
+        body:'#FAE2E2',
+        hover:"#f6bdff",
+        pink:'#f6bdff'
       }
     },
   },

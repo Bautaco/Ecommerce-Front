@@ -16,11 +16,11 @@ export default function Header({ className }: ComponentProps<"header">) {
   const options: Options[] = [
     {
       title: "Ingresar...",
-      href: "/sigin",
+      href: "/login",
     },
     {
       title: "CrearCuenta...",
-      href: "/login",
+      href: "/sigin",
     },
   ];
   const optionsLogout: Options[] = [
@@ -43,7 +43,7 @@ export default function Header({ className }: ComponentProps<"header">) {
         </SVGButton>
       </div>
       <nav className="flex gap-2 relative">
-        <SVGButton
+        {/* <SVGButton
           className="hover:bg-[#f6bdff] h-full rounded-md"
           onClick={() => {
             navigate("/ListaProductos");
@@ -52,7 +52,7 @@ export default function Header({ className }: ComponentProps<"header">) {
           <p className=" hover:text-black px-2 font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
             Lista de productos
           </p>
-        </SVGButton>
+        </SVGButton> */}
         <SVGButton>
           <SVG_Search width={15} height={15} />
         </SVGButton>
