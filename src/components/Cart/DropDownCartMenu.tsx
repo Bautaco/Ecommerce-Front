@@ -1,14 +1,14 @@
 import {
-  ComponentProps,
   PropsWithChildren,
-  useEffect,
-  useRef,
+  ComponentProps,
   useState,
+  useRef,
+  useEffect,
 } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import useProductStore from "../../store/CartStore";
-import CartItem from "./CartItem";
 import useUserStore from "../../store/UserStore";
+import CartItem from "./CartItem";
 import { calculateTotal } from "./functions";
 
 export default function DropDownCartMenu({
@@ -51,46 +51,42 @@ export default function DropDownCartMenu({
       <button
         onClick={toggleMenu}
         {...props}
-        className="inline-flex  justify-center  text-sm font-medium text-gray-700 shadow-sm w-auto"
+        className="inline-flex justify-center text-sm font-medium text-gray-700 shadow-sm w-auto"
       >
         {children}
       </button>
 
       {isOpen && (
         <div
-          className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-t-md bg-primary shadow-lg ring-1 ring-black ring-opacity-5  focus:outline-none"
+          className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-t-md bg-primary shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
           role="menu"
           aria-orientation="vertical"
           aria-labelledby="menu-button"
         >
-          <div className="py-1 overflow-auto" role="none">
+          <div
+            className="py-1 overflow-y-auto max-h-64" // Scroll con límite de altura
+            role="none"
+          >
             <h3 className="text-black font-semibold text-md p-4">
-              {products ? "Tus productos" : " No hay Productos"}
+              {products ? "Tus productos" : "No hay Productos"}
             </h3>
             {products
-              ? products.map((product) => {
-                  return (
-                    <CartItem
-                      id={product.id}
-                      title={product.title}
-                      description={"Product"}
-                      price={product.price}
-                      imageSource={product.images}
-                      quantity={product.quantity}
-                    />
-                  );
-                })
+              ? products.map((product) => (
+                  <CartItem
+                    key={product.id}
+                    id={product.id}
+                    title={product.title}
+                    description={"Product"}
+                    price={product.price}
+                    imageSource={product.images}
+                    quantity={product.quantity}
+                  />
+                ))
               : null}
-            {
-              <h3 className="text-black font-extrabold p-2">
-                Total : ${total}
-              </h3>
-            }
+            <h3 className="text-black font-extrabold p-2">Total: ${total}</h3>
             <button
-              className="bg-black  hover:bg-hover hover:text-black w-full"
-              onClick={() => {
-                handleCompra();
-              }}
+              className="bg-black hover:bg-hover hover:text-black w-full"
+              onClick={handleCompra}
             >
               Comprar
             </button>

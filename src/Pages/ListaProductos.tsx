@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import PageTemplate from "../components/PageTemplate";
 import { ProductCard } from "../components/ProductCard";
-import { getProducts } from "../handlers/handlers";
+import { getProductos, getProducts } from "../handlers/handlers";
+import { data } from "motion/react-client";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 export function ListaProductos() {
   const [listaProductos, setListaProductos] = useState<Producto[]>([]);
@@ -9,21 +12,22 @@ export function ListaProductos() {
   useEffect(() => {
     try {
       async function fetchData() {
-        const productos = await getProducts();
-        setListaProductos(productos);
+        const productos = getProductos();
+        setListaProductos((await productos).data);
       }
       fetchData();
     } catch (error) {
+      toast.error("Upss tuvimos problemas al cargar los ductos");
       console.error(error);
     }
-  }, [listaProductos]);
+  }, []);
 
   return (
     <PageTemplate title="Todos nuestros productos">
       <div className="p-32  max-sm:p-2 justify-center items-center pt-10 flex gap-6 flex-wrap">
-        {listaProductos.map((product) => (
+        {listaProductos.map((product, index) => (
           <ProductCard
-            key={product.sku}
+            key={index}
             description={product.descripcion}
             imageSource={product.imagenes[0]}
             price={product.precio}

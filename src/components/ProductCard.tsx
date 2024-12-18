@@ -21,7 +21,7 @@ export function ProductCard({
       <img src={imageSource} className=" h-fit bg-cover" alt="product" />
       <div className="flex flex-col justify-center items-center bg-black">
         <h3>{title}</h3>
-        <p>{description}</p>
+        <p className="px-2 text-center text-ellipsis ...">{description}</p>
         <p> {price} $</p>
         <button
           className="w-full p-4 hover:bg-[#f6bdff] hover:text-black"
