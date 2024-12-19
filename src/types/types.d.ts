@@ -22,6 +22,7 @@ type Producto = {
 };
 
 type Usuario = {
+  id?: string;
   usuario: string;
   nombre: string;
   apellido: string;

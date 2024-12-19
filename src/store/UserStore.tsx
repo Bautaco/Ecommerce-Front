@@ -15,6 +15,7 @@ const useUserStore = create(
   persist<UsuarioStore>(
     (set) => ({
       usuario: {
+        id: "",
         telefono: "",
         direccionEnvio: "",
         usuario: "",

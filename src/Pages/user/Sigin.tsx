@@ -34,7 +34,7 @@ export function Sigin() {
     }
 
     try {
-      const req = await sigin(
+      await sigin(
         data.usuario,
         data.password,
         data.email,
@@ -44,18 +44,18 @@ export function Sigin() {
         data.telefono
       );
 
-      setClient({
-        usuario: data.usuario,
-        nombre: data.nombre,
-        apellido: data.apellido,
-        email: data.email,
-        password: data.password,
-        direccionEnvio: data.direccionEnvio,
-        telefono: data.telefono,
-        token: req.data.token ?? "token",
-      });
+      // setClient({
+      //   usuario: data.usuario,
+      //   nombre: data.nombre,
+      //   apellido: data.apellido,
+      //   email: data.email,
+      //   password: data.password,
+      //   direccionEnvio: data.direccionEnvio,
+      //   telefono: data.telefono,
+      //   token: req.data.token ?? "token",
+      // });
       toast.success("Cuenta creada con éxito");
-      navigate("/");
+      navigate("/login");
       console.log("Datos enviados:", data);
     } catch (error) {
       toast.error("Error: " + error);

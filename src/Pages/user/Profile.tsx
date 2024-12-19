@@ -1,4 +1,3 @@
-import React from "react";
 import PageTemplate from "../../components/PageTemplate";
 import useUserStore from "../../store/UserStore";
 import { useNavigate } from "react-router";
@@ -8,8 +7,8 @@ export function Profile() {
   const navigate = useNavigate();
   function handleClick() {
     cleanToken();
-    navigate("/");
     localStorage.removeItem("usuario-store");
+    navigate("/");
   }
 
   return (
@@ -17,6 +16,7 @@ export function Profile() {
       <div className="p-4 text-black flex  flex-col items-center gap-4">
         <h2 className="text-2xl">Estás en tu profile</h2>
         <div className="mt-1 p-4 text-white w-full border-none bg-gray-800 h-80 shadow-lg  focus:ring-0 flex gap-6 flex-col">
+          <p>id:{usuario?.id}</p>
           <p className="font-bold ">Nombre: {usuario?.nombre}</p>
           <p className="font-bold ">Apellido: {usuario?.apellido}</p>
           <p className="font-bold ">Telefono: {usuario?.telefono}</p>
