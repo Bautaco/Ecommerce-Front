@@ -31,6 +31,13 @@ export const router = createBrowserRouter([
         },
       },
       {
+        path: "/miperfil",
+        lazy: async () => {
+          let { Profile } = await import("../Pages/user/Profile");
+          return { Component: Profile };
+        },
+      },
+      {
         path: "/ListaProductos",
         lazy: async () => {
           let { ListaProductos } = await import("../Pages/ListaProductos");

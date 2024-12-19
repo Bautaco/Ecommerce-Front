@@ -26,11 +26,7 @@ export default function Header({ className }: ComponentProps<"header">) {
   const optionsLogout: Options[] = [
     {
       title: "Mi Perfil",
-      href: "/MiPerfil",
-    },
-    {
-      title: "Salir",
-      href: "/",
+      href: "/miperfil",
     },
   ];
   function handleLogin(): boolean {
