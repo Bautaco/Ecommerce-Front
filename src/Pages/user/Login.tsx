@@ -29,7 +29,7 @@ export function Login() {
 
       // Guardar el usuario en el store
       setClient({
-        id: user.data.id,
+        id: req.data.id,
         apellido: user.data.lastname,
         usuario: data.username,
         nombre: user.data.firstname,
