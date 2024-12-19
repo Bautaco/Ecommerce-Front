@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import PageTemplate from "../components/PageTemplate";
 import { ProductCard } from "../components/ProductCard";
-import { getProductos, getProducts } from "../handlers/handlers";
-import { data } from "motion/react-client";
+import { getProductos } from "../handlers/handlers";
 import toast from "react-hot-toast";
-import axios from "axios";
 
 export function ListaProductos() {
   const [listaProductos, setListaProductos] = useState<Producto[]>([]);

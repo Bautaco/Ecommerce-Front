@@ -1,10 +1,12 @@
-import {string, email,  }from 'valibot';
+import { string, email, optional, object, maxLength, nullable } from "valibot";
+import type { Output } from "valibot";
 
-export const userSchema ={
+export const userSchema = object({
+  nombre: string("Este campo es requerido"),
+  apellido: string("Este campo es requerido"),
+  email: nullable(string([email("Ingrese un email válido"), maxLength(50)])),
+  password: string(),
+  token: optional(string()),
+});
 
-  name :  string("Este campo es requerido"),
-  lastname:string("Este campo es requerido"),
-  email :email("Ingrese un email valido"),
-  password : string("Ingerse un password")
-
-} 
+export type Usuario = Output<typeof userSchema>;

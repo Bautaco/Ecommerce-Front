@@ -5,8 +5,9 @@ import { createJSONStorage, persist } from "zustand/middleware";
 
 // Interfaz de la store
 interface UsuarioStore {
-  usuario: Usuario;
+  usuario: Usuario | null;
   setClient(client: Usuario): void;
+  cleanToken(): void;
   //   setCart(cart: ProductCardType): void;
 }
 
@@ -14,18 +15,21 @@ const useUserStore = create(
   persist<UsuarioStore>(
     (set) => ({
       usuario: {
+        telefono: "",
+        direccionEnvio: "",
+        usuario: "",
         nombre: "",
         apellido: "",
         email: "",
         cart: [],
         password: "",
         role: "client",
+        token: "",
       },
-      //   setCart: (cart: ProductCardType) => {
-      //     set((state) => ({ ...state, usuario: {cart:cart} })),
-      //   },
+
       setClient: (client: Usuario) =>
         set((state) => ({ ...state, usuario: client })),
+      cleanToken: () => ({ usuario: null }),
     }),
     {
       name: "usuario-store", // Nombre de la clave en sessionStorage

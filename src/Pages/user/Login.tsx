@@ -1,62 +1,83 @@
-import React, { useState } from "react";
 import PageTemplate from "../../components/PageTemplate";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router";
+import { useForm } from "react-hook-form";
+import { getUser, login } from "../../handlers/handlers";
 import useUserStore from "../../store/UserStore";
 
+type LoginFormValues = {
+  username: string;
+  password: string;
+};
+
 export function Login() {
-  const { usuario } = useUserStore();
-  const storedUser = usuario;
+  const navigate = useNavigate();
 
-  const [credentials, setCredentials] = useState({
-    email: "",
-    password: "",
-  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginFormValues>();
+  const { setClient } = useUserStore();
 
-  const [error, setError] = useState("");
+  const onSubmit = async (data: LoginFormValues) => {
+    try {
+      const req = await login(data.username, data.password);
+      const user = await getUser(data.username);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setCredentials({ ...credentials, [name]: value });
-  };
+      toast.success("Login successful  " + user.data.lastname);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (storedUser.email !== "" || storedUser.password !== "") {
-      if (
-        storedUser?.email === credentials.email &&
-        storedUser?.password === credentials.password
-      ) {
-        alert("Inicio de sesión exitoso");
-      } else {
-        setError("Correo electrónico o contraseña incorrectos");
-      }
+      // Guardar el usuario en el store
+      setClient({
+        apellido: user.data.lastname,
+        usuario: data.username,
+        nombre: user.data.firstname,
+        email: user.data.email,
+        password: "",
+        direccionEnvio: user.data.direccionEnvio,
+        telefono: user.data.telefono,
+        token: req.data.token,
+      });
+      navigate("/");
+    } catch (error) {
+      toast.error("Error: " + error);
     }
   };
 
   return (
     <PageTemplate title="Login" titleClassName="text-center">
       <div className="   flex flex-col items-center">
-        <form onSubmit={handleSubmit} className="mt-10 w-full max-w-sm">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="mt-10 w-full max-w-sm"
+        >
           <div>
             <input
-              type="email"
-              name="email"
+              type="text"
+              {...register("username", {
+                required: "El usuario es obligatorio",
+              })}
               placeholder="Correo electrónico"
-              value={credentials.email}
-              onChange={handleChange}
-              className="mt-1 p-4 block w-full border-none bg-gray-800 h-11 rounded-xl shadow-lg  focus:ring-0"
+              className="mt-1 p-4 block w-full border-none bg-gray-800 h-11 shadow-lg  focus:ring-0"
             />
+            {errors.username && (
+              <p className="text-red-500 text-sm">{errors.username.message}</p>
+            )}
           </div>
           <div className="mt-7">
             <input
               type="password"
-              name="password"
               placeholder="Contraseña"
-              value={credentials.password}
-              onChange={handleChange}
-              className="mt-1 p-4 block w-full border-none bg-gray-800 h-11 rounded-xl shadow-lg  focus:ring-0"
+              {...register("password", {
+                required: "El usuario es obligatorio",
+              })}
+              className="mt-1 p-4 block w-full border-none bg-gray-800 h-11 shadow-lg  focus:ring-0"
             />
+            {errors.password && (
+              <p className="text-red-500 text-sm">{errors.password?.message}</p>
+            )}
           </div>
-          {error && <p className="mt-3 text-red-500">{error}</p>}
+
           <div className="mt-7">
             <button
               type="submit"

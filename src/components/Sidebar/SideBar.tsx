@@ -37,7 +37,7 @@ export function SideBar({
   return (
     <motion.div
       className={cn(
-        "fixed z-40 bg-pink h-52 mt-24 overflow-hidden text-black shadow-lg",
+        "fixed flex flex-col justify-evenly z-40 bg-pink h-52 mt-24 overflow-hidden text-black shadow-lg",
         {
           hidden: show,
         }

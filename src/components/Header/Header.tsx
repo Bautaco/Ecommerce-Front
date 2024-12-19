@@ -11,7 +11,7 @@ import DropDownCartMenu from "../Cart/DropDownCartMenu";
 import useUserStore from "../../store/UserStore";
 export default function Header({ className }: ComponentProps<"header">) {
   const navigate = useNavigate();
-  const { usuario } = useUserStore();
+  const { usuario, cleanToken } = useUserStore();
 
   const options: Options[] = [
     {
@@ -25,12 +25,16 @@ export default function Header({ className }: ComponentProps<"header">) {
   ];
   const optionsLogout: Options[] = [
     {
+      title: "Mi Perfil",
+      href: "/MiPerfil",
+    },
+    {
       title: "Salir",
       href: "/",
     },
   ];
   function handleLogin(): boolean {
-    if (usuario.email !== "") {
+    if (usuario!.email !== "") {
       return false;
     }
     return true;
@@ -53,9 +57,9 @@ export default function Header({ className }: ComponentProps<"header">) {
             Lista de productos
           </p>
         </SVGButton> */}
-        <SVGButton>
+        {/* <SVGButton>
           <SVG_Search width={15} height={15} />
-        </SVGButton>
+        </SVGButton> */}
 
         <DropDownMenu
           children={<SVG_User width={15} height={15} />}

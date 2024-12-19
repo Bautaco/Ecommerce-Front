@@ -18,6 +18,7 @@ interface ProductStore {
   decrementQuantity: (id: string) => void;
   removeProduct: (id: string) => void;
   borrarCarrito: () =>void;
+  client?: string 
 
 }
 
