@@ -29,7 +29,7 @@ export function ListaProductos() {
             description={product.descripcion}
             imageSource={product.imagenes[0]}
             price={product.precio}
-            id={product.sku}
+            id={product.id}
             title={product.nombre}
           />
         ))}
@@ -39,21 +39,21 @@ export function ListaProductos() {
           imageSource="src\assets\fotos\2.webp"
           price={20000}
           title="POLLERA "
-          id="1"
+          id={1}
         />
         <ProductCard
           description="2AADSF"
           imageSource="src\assets\fotos\1.webp"
           price={2999}
           title="POLLERA PANTALON"
-          id="2"
+          id={2}
         />
         <ProductCard
           description="2AADSF"
           imageSource="src\assets\fotos\3.webp"
           price={4000}
           title="Top Level"
-          id="3"
+          id={3}
         />
 
         <ProductCard
@@ -61,7 +61,7 @@ export function ListaProductos() {
           imageSource="src\assets\fotos\5.webp"
           price={4000}
           title="Top Level"
-          id="4"
+          id={2}
         />
       </div>
     </PageTemplate>

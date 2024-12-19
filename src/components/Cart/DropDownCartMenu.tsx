@@ -10,6 +10,8 @@ import useProductStore from "../../store/CartStore";
 import useUserStore from "../../store/UserStore";
 import CartItem from "./CartItem";
 import { calculateTotal } from "./functions";
+import toast from "react-hot-toast";
+import { compra, ProductReq } from "../../handlers/handlers";
 
 export default function DropDownCartMenu({
   children,
@@ -31,12 +33,44 @@ export default function DropDownCartMenu({
     }
   };
   const navigate = useNavigate();
-  function handleCompra() {
-    if (usuario.nombre !== "") {
-      alert("Compra realizada con éxito!");
-      borrarCarrito();
-    } else {
+
+  async function handleCompra() {
+    // Verifica si el usuario está autenticado
+    if (!usuario?.usuario) {
+      toast("Inicie sesión para realizar la compra.");
       navigate("/login");
+      return;
+    }
+
+    if (!products || products.length === 0) {
+      toast("No tienes productos en el carrito.");
+      navigate("/ListaProductos");
+      return;
+    }
+
+    // Construye la lista de productos requerida por la API
+    const listaproductos: ProductReq[] = products.map((product) => ({
+      id: product.id,
+      nombre: product.title,
+      precio: product.id,
+    }));
+
+    try {
+      // Llama al endpoint de compra
+      const response = await compra(usuario.id!, listaproductos);
+      if (response.status === 200 || response.status === 201) {
+        toast.success("Compra realizada con éxito.");
+        borrarCarrito(); // Vacía el carrito
+      } else {
+        toast.error(
+          "Hubo un problema al realizar la compra. Intenta nuevamente."
+        );
+      }
+    } catch (error) {
+      console.error("Error al realizar la compra:", error);
+      toast.error(
+        "No se pudo completar la compra. Verifica tu conexión o intenta más tarde."
+      );
     }
   }
 

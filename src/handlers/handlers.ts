@@ -38,3 +38,16 @@ export function sigin(
   });
   return response;
 }
+export function compra(clientId: string, listaProductos: ProductReq[]) {
+  const response = axios.post(`${baseUrl}api/pedidos`, {
+    producto: listaProductos,
+    cliente: clientId,
+  });
+  return response;
+}
+
+export type ProductReq = {
+  id: number;
+  nombre: string;
+  precio: number;
+};

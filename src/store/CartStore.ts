@@ -1,9 +1,9 @@
-import { create } from 'zustand';
-import { createJSONStorage, persist } from 'zustand/middleware';
+import { create } from "zustand";
+import { createJSONStorage, persist } from "zustand/middleware";
 
 // Interfaz del producto
 interface Product {
-  id: string;
+  id: number;
   title: string;
   price: number;
   quantity: number;
@@ -14,12 +14,11 @@ interface Product {
 interface ProductStore {
   products: Product[];
   addProduct: (product: Product) => void;
-  incrementQuantity: (id: string) => void;
-  decrementQuantity: (id: string) => void;
-  removeProduct: (id: string) => void;
-  borrarCarrito: () =>void;
-  client?: string 
-
+  incrementQuantity: (id: number) => void;
+  decrementQuantity: (id: number) => void;
+  removeProduct: (id: number) => void;
+  borrarCarrito: () => void;
+  client?: string;
 }
 
 const useProductStore = create(
@@ -28,7 +27,9 @@ const useProductStore = create(
       products: [],
       addProduct: (product) =>
         set((state) => {
-          const existingProduct = state.products.find((p) => p.id === product.id);
+          const existingProduct = state.products.find(
+            (p) => p.id === product.id
+          );
           if (existingProduct) {
             return {
               products: state.products.map((p) =>
@@ -38,8 +39,8 @@ const useProductStore = create(
               ),
             };
           }
-       
-          return{ products: [...state.products, product] };
+
+          return { products: [...state.products, product] };
         }),
       incrementQuantity: (id) =>
         set((state) => ({
@@ -53,21 +54,20 @@ const useProductStore = create(
             .map((p) =>
               p.id === id ? { ...p, quantity: Math.max(p.quantity - 1, 0) } : p
             )
-            .filter((p) => p.quantity > 0), 
+            .filter((p) => p.quantity > 0),
         })),
       removeProduct: (id) =>
         set((state) => ({
           products: state.products.filter((p) => p.id !== id),
         })),
-        borrarCarrito: () =>
-          set(() => ({
-            products:[]
-          })),
+      borrarCarrito: () =>
+        set(() => ({
+          products: [],
+        })),
     }),
     {
-      name: 'product-store', // Nombre de la clave en sessionStorage
+      name: "product-store", // Nombre de la clave en sessionStorage
       storage: createJSONStorage(() => localStorage),
-
     }
   )
 );

@@ -1,7 +1,7 @@
 import useProductStore from "../store/CartStore";
 
 export interface ProductCardType {
-  id: string;
+  id: number;
   title: string;
   description: string;
   price: number;
@@ -26,6 +26,7 @@ export function ProductCard({
         <button
           className="w-full p-4 hover:bg-[#f6bdff] hover:text-black"
           onClick={() => {
+            console.log(id);
             addProduct({
               id: id,
               price: price,
