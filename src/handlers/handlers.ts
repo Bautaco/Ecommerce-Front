@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const baseUrl = "https://xh8p97s3-8080.brs.devtunnels.ms/";
-
+const baseUrl2 = "http://localhost:8080/";
+const baseUrl = "https://8s6ggzdl-8080.brs.devtunnels.ms/";
 export const getProducts = async () => {
   const response = axios.get<Producto[]>(`${baseUrl}/api/productos`);
   return response;
@@ -40,14 +40,15 @@ export function sigin(
 }
 export function compra(clientId: string, listaProductos: ProductReq[]) {
   const response = axios.post(`${baseUrl}api/pedidos`, {
-    producto: listaProductos,
-    cliente: clientId,
+    clienteId: clientId,
+    productos: listaProductos,
   });
   return response;
 }
 
 export type ProductReq = {
-  id: number;
-  nombre: string;
-  precio: number;
+  productoId: number;
+  nombre?: string;
+  precio?: number;
+  cantidad: number;
 };

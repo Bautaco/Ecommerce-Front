@@ -50,9 +50,8 @@ export default function DropDownCartMenu({
 
     // Construye la lista de productos requerida por la API
     const listaproductos: ProductReq[] = products.map((product) => ({
-      id: product.id,
-      nombre: product.title,
-      precio: product.id,
+      productoId: product.id,
+      cantidad: product.quantity,
     }));
 
     try {
