@@ -9,6 +9,7 @@ export function Profile() {
     cleanToken();
     localStorage.removeItem("usuario-store");
     navigate("/");
+    location.reload();
   }
 
   return (
